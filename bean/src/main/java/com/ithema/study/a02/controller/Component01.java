@@ -1,4 +1,4 @@
-package com.ithema.study.controller;
+package com.ithema.study.a02.controller;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

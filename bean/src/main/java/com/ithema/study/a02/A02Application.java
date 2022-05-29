@@ -1,4 +1,4 @@
-package com.ithema.study.demo;
+package com.ithema.study.a02;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -87,6 +87,12 @@ public class A02Application {
 
         @Bean("/hello")
         public Controller controller1(){
+            /*return new Controller() {
+                @Override
+                public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+                    return null;
+                }
+            }*/
             return (request, response) -> {
                 response.getWriter().println("hello");
                 return null;

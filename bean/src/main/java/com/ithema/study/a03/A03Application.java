@@ -7,10 +7,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @Slf4j
-public class A02Application {
+public class A03Application {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(A02Application.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(A03Application.class, args);
         log.info("======项目启动了");
         context.close();
     }

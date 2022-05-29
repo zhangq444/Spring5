@@ -1,4 +1,4 @@
-package com.ithema.study.demo;
+package com.ithema.study.a02;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
