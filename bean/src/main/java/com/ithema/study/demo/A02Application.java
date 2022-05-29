@@ -26,7 +26,7 @@ public class A02Application {
 //        testClassPathXmlApplicationContext();
 //        testFileSystemXmlApplicationContext();
 //        testAnnotationConfigApplicationContext();
-        testAnnotationConfigServletWebServerApplicationContext();
+//        testAnnotationConfigServletWebServerApplicationContext();
 
 
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");

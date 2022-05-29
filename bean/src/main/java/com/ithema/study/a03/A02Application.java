@@ -1,4 +1,4 @@
-package com.ithema.study.a02;
+package com.ithema.study.a03;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
