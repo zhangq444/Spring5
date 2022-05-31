@@ -25,6 +25,20 @@ public class Config {
         return new Bean1();
     }
 
+
+    /**
+     * 这个SqlSessionFactoryBean，实现了InitializingBean接口和FactoryBean<SqlSessionFactory>接口，
+     * InitializingBean接口的作用是在初始化对象时会调用afterPropertiesSet这个方法，然后在这个方法中，会调用buildSqlSessionFactory，然后就会给sqlSessionFactory这个成员变量赋值，
+     * 然后FactoryBean<SqlSessionFactory>接口，FactoryBean 是一个能生产或修饰对象生成的工厂 Bean。一个 Bean 如果实现了 FactoryBean 接口，那么根据该 Bean 的名称获取到的实际上是 getObject() 返回的对象，
+     * 而不是这个 Bean 自身实例，如果要获取这个 Bean 自身实例，那么需要在名称前面加上 & 符号
+     * 所以在SqlSessionFactoryBean这个类中的getObject方法返回的是sqlSessionFactory这个成员变量，所以在后面其他方法的注入时可以注入sqlSessionFactory。
+     * 这个花了我3-4个小时才弄明白
+     * ————————————————
+     * 版权声明：本文为CSDN博主「桐花思雨」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+     * 原文链接：https://blog.csdn.net/weixin_38192427/article/details/123320599
+     * @param dataSource
+     * @return
+     */
     @Bean
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
         log.info("======dataSource:{}",dataSource.getClass().getName());
