@@ -1,20 +1,22 @@
 package com.ithema.study.a05;
 
 import com.alibaba.fastjson2.JSON;
+import com.ithema.study.a05.component.SpringBeanUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionCustomizer;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.context.annotation.AnnotationBeanNameGenerator;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ConfigurationClassPostProcessor;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.core.type.MethodMetadata;
 import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.stereotype.Component;
@@ -22,11 +24,12 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Set;
 
 @Slf4j
 public class A05Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         GenericApplicationContext context = new GenericApplicationContext();
         context.registerBean("config", Config.class);
         //beanFactory后置处理器，用来解析@ComponentScan  @Bean @Import @ImportResource
@@ -73,11 +76,46 @@ public class A05Application {
 //
 //            });
 //        }
-        context.registerBean(ComponentScanPostProcessor.class);
+        //自己实现@ComponentScan注解生成Bean
+//        context.registerBean(ComponentScanPostProcessor.class);
+
+        //自己实现@Bean注解的解析
+//        CachingMetadataReaderFactory factory = new CachingMetadataReaderFactory();
+//        MetadataReader reader = factory.getMetadataReader(new ClassPathResource("com/ithema/study/a05/Config.class"));
+//        Set<MethodMetadata> methods = reader.getAnnotationMetadata().getAnnotatedMethods(Bean.class.getName());
+//        methods.stream().forEach(methodMetadata -> log.info("======method:{}",methodMetadata));
+//        for (MethodMetadata method : methods) {
+//            //获取@Bean注解中的属性值，属性的key为initMethod
+//            String initMethod = method.getAnnotationAttributes(Bean.class.getName()).get("initMethod").toString();
+//
+//            BeanDefinitionBuilder builder=BeanDefinitionBuilder.genericBeanDefinition();
+//            //设置自动装配，就是在config类中的工厂方法，如果方法有参数，那些参数自动装配
+//            builder.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
+//            if(StringUtils.isNotBlank(initMethod)){
+//                //设置初始化方法，传入方法名
+//                builder.setInitMethodName(initMethod);
+//            }
+//            AbstractBeanDefinition beanDefinition = builder.setFactoryMethodOnBean(method.getMethodName(), "config").getBeanDefinition();
+//            context.getDefaultListableBeanFactory().registerBeanDefinition(method.getMethodName(),beanDefinition);
+//        }
+        //自己实现@Bean注解的解析
+        context.registerBean(AtBeanPostProcessor.class);
+        //自己实现@Mapper注解的解析
+        context.registerBean(MapperPostProcessor.class);
+
 
         context.refresh();
 
-        Arrays.stream(context.getBeanDefinitionNames()).forEach(beanName->log.info("======{}",beanName));
+        /*AnnotationConfigApplicationContext applicationContext =
+                new AnnotationConfigApplicationContext(Config.class);
+        Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(beanName->{
+            log.info("======springBean:{}",beanName);
+        });*/
+        /*Arrays.stream(SpringBeanUtil.getApplicationContext().getBeanDefinitionNames()).forEach(beanName->{
+            log.info("======springBean:{}",beanName);
+        });*/
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(beanName->log.info("======beanName：{}",beanName));
 
         context.close();
 
