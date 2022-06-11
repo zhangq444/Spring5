@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ConfigurationClassPostProcessor;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.core.annotation.Order;
 
 import java.util.Arrays;
 
@@ -48,11 +49,12 @@ public class A17 {
 
     static class Target2{
         public void bar(){
-            System.out.println("======Target1 bar");
+            System.out.println("======Target2 bar");
         }
     }
 
     @Aspect
+    @Order(value = 1)
     static class Aspect1{
 
         @Before("execution(* foo())")
@@ -72,7 +74,9 @@ public class A17 {
         public Advisor advisor3(MethodInterceptor advice3){
             AspectJExpressionPointcut pointcut=new AspectJExpressionPointcut();
             pointcut.setExpression("execution(* foo())");
-            return new DefaultPointcutAdvisor(pointcut,advice3);
+            DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(pointcut, advice3);
+            advisor.setOrder(2);
+            return advisor;
         }
 
         @Bean
