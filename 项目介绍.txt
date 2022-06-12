@@ -1,4 +1,12 @@
 这个是B站上面的“黑马程序员Spring视频教程，全面深度讲解spring5底层原理”这个视频对应的项目代码
+视频地址：
+https://www.bilibili.com/video/BV1P44y1N7QG?p=62&spm_id_from=pageDriver&vd_source=b92a98721d813ed1cbbad0c405a69778
+相关别人的学习文档地址：
+https://blog.csdn.net/qq_38505969/article/details/123739542
+相关别人的学习代码：
+https://gitee.com/CandyWall/spring-source-study#https://gitee.com/link?target=https%3A%2F%2Fwww.bilibili.com%2Fvideo%2FBV1P44y1N7QG%3Fp%3D149
 
-
+代码中每一个包都对应视频中的一讲
+例如a18的包代表视频中的第18讲的代码
+如果包缺少的话，那么就是无法实现代码或者就是无关紧要的课程
 

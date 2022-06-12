@@ -6,6 +6,9 @@ import org.springframework.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 import java.lang.reflect.UndeclaredThrowableException;
 
+/**
+ * 代理对象的类，继承目标类
+ */
 public class Proxy extends Target {
 
     private MethodInterceptor methodInterceptor;
@@ -23,9 +26,16 @@ public class Proxy extends Target {
 
     static {
         try {
+            /**
+             * 初始化原始的目标方法参数，这个就不需要通过反射调用了
+             */
             save0 = Target.class.getMethod("save");
             save1 = Target.class.getMethod("save", int.class);
             save2 = Target.class.getMethod("save", long.class);
+            /**
+             * 初始化方法成员变量的代理，这个就是ciglib中的接口中的第四个参数，
+             * 这个是代理类中的方法，也就是在子类中的方法，然后在里面调用父类的方法，就是目标类的方法，这样就不用反射调用了
+             */
             save0Proxy=MethodProxy.create(Target.class,Proxy.class,"()V","save","saveSuper");
             save1Proxy=MethodProxy.create(Target.class,Proxy.class,"(I)V","save","saveSuper");
             save2Proxy=MethodProxy.create(Target.class,Proxy.class,"(J)V","save","saveSuper");
@@ -36,6 +46,9 @@ public class Proxy extends Target {
 
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>带原始功能的方法
+    /**
+     * 这个是代理类中的方法，也就是在子类中的方法，然后在里面调用父类的方法，就是目标类的方法，这样就不用反射调用了
+     */
     public void saveSuper(){
         super.save();
     }
