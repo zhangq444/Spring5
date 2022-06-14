@@ -62,7 +62,7 @@ public class A17_2 {
 
 
     public static void main(String[] args) {
-        //这个视频中没有仔细说，可能是切面类工厂
+        //这个视频中没有仔细说，可能是切面类工厂(个人理解应该是用来生成低级切面类的工厂)
         AspectInstanceFactory factory = new SingletonAspectInstanceFactory(new Aspect());
 
         //高级切面类转换为低级切面类的方式
