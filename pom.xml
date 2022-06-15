@@ -6,6 +6,7 @@
 	<modules>
 		<module>bean</module>
         <module>aspectj</module>
+        <module>springmvc</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
