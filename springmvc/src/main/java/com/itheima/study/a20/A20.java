@@ -63,7 +63,7 @@ public class A20 {
         });
 
         /**
-         * 调用增加了自定义的参数解析器的控制器
+         * 调用增加了自定义的参数解析器的控制器,在配置文件中配置了
          */
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         MockHttpServletRequest request2 = new MockHttpServletRequest("PUT", "/test3");
@@ -73,7 +73,7 @@ public class A20 {
         handlerAdapter.invokeHandlerMethod(request2, response, (HandlerMethod) chain2.getHandler());
 
         /**
-         * 调用增加了自定义的返回值解析器的控制器
+         * 调用增加了自定义的返回值解析器的控制器,在配置文件中配置了
          */
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         MockHttpServletRequest request3 = new MockHttpServletRequest("GET", "/test4.yml");

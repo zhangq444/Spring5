@@ -77,8 +77,8 @@ public class WebConfig {
     @Bean
     public MyRequestMappingHandlerAdapter requestMappingHandlerAdapter(){
         TokenArgumentResolver tokenArgumentResolver = new TokenArgumentResolver();
-        MyRequestMappingHandlerAdapter handlerAdapter = new MyRequestMappingHandlerAdapter();
         YmlReturnValueHandler returnValueHandler = new YmlReturnValueHandler();
+        MyRequestMappingHandlerAdapter handlerAdapter = new MyRequestMappingHandlerAdapter();
         handlerAdapter.setCustomArgumentResolvers(Lists.newArrayList(tokenArgumentResolver));
         handlerAdapter.setCustomReturnValueHandlers(Lists.newArrayList(returnValueHandler));
         return handlerAdapter;
