@@ -36,6 +36,7 @@ public class A25 {
         //创建ServletInvocableHandlerMethod对象需要两个参数，一个是控制器对象，一个是控制器的方法对象
         ServletInvocableHandlerMethod handlerMethod=new ServletInvocableHandlerMethod(new WebConfig.Controller1(),WebConfig.Controller1.class.getMethod("foo", WebConfig.User.class));
 
+        //数据绑定器工厂
         ServletRequestDataBinderFactory factory = new ServletRequestDataBinderFactory(null,null);
         //设置数据绑定器
         handlerMethod.setDataBinderFactory(factory);
