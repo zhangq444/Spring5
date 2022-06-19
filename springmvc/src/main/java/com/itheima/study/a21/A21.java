@@ -107,11 +107,21 @@ public class A21 {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                log.info("======methodParameter, index:{}  {}  {} -> {} ", methodParameter.getParameterIndex(), name + methodParameter.getParameterType().getSimpleName(), methodParameter.getParameterName(), value);
+                log.info("======methodParameter, index:{}  {}  {} -> {}  {} ", methodParameter.getParameterIndex(), name + methodParameter.getParameterType().getSimpleName(), methodParameter.getParameterName(), value, value.getClass().getSimpleName());
                 log.info("======模型数据:{}", container.getModel());
             } else {
                 log.info("======methodParameter, index:{}  {}  {} ", methodParameter.getParameterIndex(), name + methodParameter.getParameterType().getSimpleName(), methodParameter.getParameterName());
             }
+
+            /**
+             *  自己的思考，handlerMethod里面封装了控制器方法的每一个参数methodParameter,然后HandlerMethodArgumentResolverComposite里面放了很多参数解析器，request里面有参数的数据来源，
+             *  个人理解，HandlerMethodArgumentResolverComposite参数解析器可以解析控制器方法中的每一个参数，包括参数的索引位置，参数被标注的注解，参数的类型，参数的变量名，有了这些，就可以
+             *  反射创建一个参数对象，然后request中参数的数据来源，然后有ServletRequestDataBinderFactory参数绑定器工厂，可以将request的数据类型进行自动转换（这个在23讲里面有），然后和前面创造的参数对象进行
+             *  数据绑定，这样就可以获得Controller的方法中的参数对象了，并且这个参数对象的索引位置和参数名也知道，这样的话，后面在处理器适配器反射调用控制器方法的时候，Spring容器中有了控制器对象，
+             *  有了控制器类中的方法对象，也有了调用方法对象所需要的参数，就可以反射调用控制器方法了，例如  result = method.invoke(object,args)  用这种方式进行调用
+             *
+             *
+             */
 
 
         });

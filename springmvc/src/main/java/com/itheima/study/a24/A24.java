@@ -36,6 +36,11 @@ public class A24 {
         Method getDataBinderFactory = RequestMappingHandlerAdapter.class.getDeclaredMethod("getDataBinderFactory", HandlerMethod.class);
         getDataBinderFactory.setAccessible(true);
 
+        /**
+         * 下面两个所谓模拟调用foo方法和bar方法，实际上并没有真实调用，这个老师讲的时候说是模拟的，但是我在这两个方法中都打印了语句，最后都没有输出，说明foo方法和bar方法并没有执行，
+         * 我看了RequestMappingHandlerAdapter的源码，adapter真实在调用控制器方法所使用的的方法是invokeHandlerMethod，但是在这个方法中，调用了getDataBinderFactory方法，
+         * 所以，应该是首次执行控制器方法时，调用了invokeHandlerMethod方法，然后调用了getDataBinderFactory，然后初始化了Controller中的@InitBinder，并且存入initBinderCache中去
+         */
         log.info("======2. 模拟调用Controller1的foo方法时...");
         getDataBinderFactory.invoke(adapter, new HandlerMethod(new WebConfig.Controller1(), WebConfig.Controller1.class.getMethod("foo")));
         showBinderMethods(adapter);

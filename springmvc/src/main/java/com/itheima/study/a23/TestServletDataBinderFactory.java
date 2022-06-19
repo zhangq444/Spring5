@@ -63,8 +63,8 @@ public class TestServletDataBinderFactory {
         ServletRequestDataBinderFactory factory = new ServletRequestDataBinderFactory(null, initializer);
 
         WebDataBinder binder = factory.createBinder(new ServletWebRequest(request), target, "user");
-        //我的理解，binder是转换器，绑定目标对象，将参数类型转换，ServletRequestParameterPropertyValues是用来获取request的参数的
-        //是数据源，将数据源和转换器连接，然后转换器会将数据源中的参数绑定到目标对象中去
+        //我的理解，binder是数据绑定器，绑定目标对象，将参数类型转换，ServletRequestParameterPropertyValues是用来获取request的参数的
+        //是数据源，将数据源和绑定器连接，然后转换器会将数据源中的参数绑定到目标对象中去
         binder.bind(new ServletRequestParameterPropertyValues(request));
         System.out.println(target);
 

@@ -36,7 +36,7 @@ public class WebConfig {
         }
 
         public void foo(){
-
+            System.out.println("======foo()");
         }
 
     }
@@ -55,7 +55,7 @@ public class WebConfig {
         }
 
         public void bar(){
-
+            System.out.println("======bar()");
         }
 
     }

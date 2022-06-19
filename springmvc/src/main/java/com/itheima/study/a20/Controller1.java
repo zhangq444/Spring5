@@ -22,7 +22,7 @@ public class Controller1 {
 
     @PostMapping("/test2")
     public ModelAndView test2(@RequestParam("name") String name) throws Exception {
-        log.info("======test1({})", name);
+        log.info("======test2({})", name);
         return null;
     }
 

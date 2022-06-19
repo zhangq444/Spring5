@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.*;
  *  ServletInvocableHandlerMethod这个东西是HandlerMethod的子类，将来RequestMappingHandlerAdapter执行控制器方法，调用的就是这个ServletInvocableHandlerMethod，
  *  他继承了父类，有bean和method，同时包含4个部分，WebDataBinderFactory负责对象绑定、类型转换，ParameterNameDiscoverer负责参数名解析，
  *  HandlerMethodArgumentResolverComposite负责解析参数，HandlerMethodReturnValueHandlerComposite负责处理返回值
+ *  这4个东西前3个都在父类InvocableHandlerMethod中，是3个成员变量，最后一个返回值处理器在自己的类中
  *
  *
  */

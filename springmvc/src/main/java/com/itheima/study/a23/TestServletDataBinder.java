@@ -10,6 +10,9 @@ import org.springframework.web.bind.ServletRequestParameterPropertyValues;
 
 import java.util.Date;
 
+/**
+ * 这个可以和A21里面的使用想联系，就是将request中的参数绑定到参数对象中去
+ */
 public class TestServletDataBinder {
 
     public static void main(String[] args) {
