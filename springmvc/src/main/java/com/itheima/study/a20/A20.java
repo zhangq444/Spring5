@@ -18,6 +18,7 @@ import java.util.Map;
  * 主要讲了一下DispatcherServlet的初始化，以及请求过来，先通过RequestMappingHandlerMapping来判断应该是哪个控制器来处理
  * 然后由RequestMappingHandlerAdapter来调用控制器方法处理请求，
  * 同时讲解了自定义的参数解析器和返回值处理器
+ * @author grzha
  */
 @Slf4j
 public class A20 {

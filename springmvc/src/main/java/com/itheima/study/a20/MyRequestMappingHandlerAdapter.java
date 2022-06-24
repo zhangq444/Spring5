@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * 因为RequestMappingHandlerAdapter里面的invokeHandlerMethod这个方法是受保护的，
  * 所以写一个子类继承RequestMappingHandlerAdapter，然后重新invokeHandlerMethod方法，调用父类的方法，然后把
  * 方法改成public的，这样就可以调用了
+ * @author grzha
  */
 public class MyRequestMappingHandlerAdapter extends RequestMappingHandlerAdapter {
 
