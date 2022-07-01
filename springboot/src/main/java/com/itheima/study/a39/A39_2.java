@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 这一讲主要讲了SpringApplication.run方法启动后做的事情
+ *
  * @author grzha
  */
 @Slf4j
@@ -38,21 +39,25 @@ public class A39_2 {
      * application.properties，由StandardConfigDataLocationResolver解析
      * spring.application.json
      * 6.绑定spring.main 到SpringApplication对象
+     * (后面的步骤7-12讲义没有放出，看后面的视频会慢慢讲解步骤)
      *
      * @param args
      */
     public static void main(String[] args) throws Exception {
+        /**
+         * 这里面讲的是步骤1
+         */
 
         SpringApplication application = new SpringApplication();
         //添加事件监听器，监听事件，打印事件的类型
         application.addListeners(event -> {
-            log.info("======event:{}",event.getClass());
+            log.info("======event:{}", event.getClass());
         });
 
         //获取事件发送器实现类名,事件发送器的接口是SpringApplicationRunListener，实现类是EventPublishingRunListener
         //接口和实现类的关系是配置在spring.factories这个配置文件中的，SpringFactoriesLoader这个工具类可以读取spring.factories这类配置文件，然后就可以获得实现类的名称了
         List<String> nameList = SpringFactoriesLoader.loadFactoryNames(SpringApplicationRunListener.class, A39_2.class.getClassLoader());
-        nameList.stream().forEach(name->log.info("======name:{}",name));
+        nameList.stream().forEach(name -> log.info("======name:{}", name));
 
         //获取事件发布器的构造方法，然后创建事件发布器对象
         Class<?> clazz = Class.forName(nameList.get(0));
