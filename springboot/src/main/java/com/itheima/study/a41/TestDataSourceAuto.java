@@ -29,7 +29,6 @@ public class TestDataSourceAuto {
                 "--spring.datasource.url=jdbc:mysql://localhost:3306/mybatis",
                 "--spring.datasource.username=root",
                 "--spring.datasource.password=root"));
-//        AutoConfigurationPackages.register(context.getDefaultListableBeanFactory(),TestDataSourceAuto.class.getPackageName());
         context.setEnvironment(environment);
         ///注册一些后处理器
         AnnotationConfigUtils.registerAnnotationConfigProcessors(context.getDefaultListableBeanFactory());
@@ -108,9 +107,26 @@ public class TestDataSourceAuto {
      *  第三行表示，当缺少MapperFactoryBean.class, MapperScannerConfigurer.class这两个类时条件才成立，才提供MapperScannerRegistrarNotFoundConfiguration的bean
      *  如果第三行成立，就会执行第二行的代码，@Import，导入MybatisAutoConfiguration.AutoConfiguredMapperScannerRegistrar.class这个类
      *  然后这个类实现了ImportBeanDefinitionRegistrar这个接口，实现这个接口，可以通过编程的方式补充一些BeanDefinition,就是补充用Mapper注解标注的类
-     *
-     *
      */
+    /**
+     *  DataSourceTransactionManagerAutoConfiguration  事务的自动配置
+     *          @Bean
+     *         @ConditionalOnMissingBean({TransactionManager.class})
+     *         DataSourceTransactionManager transactionManager(Environment environment, DataSource dataSource, ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
+     *  第二行代码可以看到，当spring容器中没有TransactionManager的bean的时候，就会默认提供DataSourceTransactionManager
+     *  internalTransactionAdvisor   transactionAttributeSource  transactionInterceptor  这三个bean  来源是ProxyTransactionManagementConfiguration
+     *  这个是来源于TransactionAutoConfiguration配置类，在这个配置类中有内部类EnableTransactionManagementConfiguration也是配置类，这个配置类里面的类有EnableTransactionManagement注解
+     *  EnableTransactionManagement这个注解里面有@Import({TransactionManagementConfigurationSelector.class})，在TransactionManagementConfigurationSelector中
+     *  有ProxyTransactionManagementConfiguration，所以它是一层一层导入的（花了很久才找到。。。）
+     *  transactionAttributeSource代表的是切点的bean
+     *  transactionInterceptor代表的是环绕通知的bean
+     *  internalTransactionAdvisor这个bean依赖上面两个bean，就是形成的低级切面
+     */
+
+
+
+
+
 
 
 }

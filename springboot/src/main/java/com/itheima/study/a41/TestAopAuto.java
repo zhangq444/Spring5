@@ -46,6 +46,9 @@ public class TestAopAuto {
 
     }
 
+    /**
+     * 这个是aop相关的自动配置类，是使用jdk动态代理还是cglib动态代理
+     */
     static class MyImportSelector implements DeferredImportSelector {
         @Override
         public String[] selectImports(AnnotationMetadata importingClassMetadata) {
