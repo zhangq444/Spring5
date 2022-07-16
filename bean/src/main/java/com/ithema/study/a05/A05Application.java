@@ -26,6 +26,10 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ *  这一讲主要讲BeanFactory的后处理器
+ * @author grzha
+ */
 @Slf4j
 public class A05Application {
 
@@ -34,7 +38,7 @@ public class A05Application {
         context.registerBean("config", Config.class);
         //beanFactory后置处理器，用来解析@ComponentScan  @Bean @Import @ImportResource
         //context.registerBean(ConfigurationClassPostProcessor.class);
-        //解析@Mapper注解
+        //解析@Mapper注解，增加的同时需要指定要扫描的包路径
         /*context.registerBean(MapperScannerConfigurer.class, new BeanDefinitionCustomizer() {
             @Override
             public void customize(BeanDefinition beanDefinition) {
@@ -77,7 +81,7 @@ public class A05Application {
 //            });
 //        }
         //自己实现@ComponentScan注解生成Bean
-//        context.registerBean(ComponentScanPostProcessor.class);
+        context.registerBean(ComponentScanPostProcessor.class);
 
         //自己实现@Bean注解的解析
 //        CachingMetadataReaderFactory factory = new CachingMetadataReaderFactory();

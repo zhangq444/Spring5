@@ -59,7 +59,7 @@ public class DigInAutowired {
         System.out.println(bean1);
 
         /**
-         *  如何按类型查找值
+         *  如何按类型查找值，模拟metadata.inject方法内部
          */
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         //在容器中查找bean4属性对应类型的值

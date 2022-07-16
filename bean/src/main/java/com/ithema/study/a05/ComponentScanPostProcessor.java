@@ -22,6 +22,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ *  自己实现ConfigurationClassPostProcessor功能，自己解析@Component注解生成bean
+ * @author grzha
+ */
 @Slf4j
 public class ComponentScanPostProcessor implements BeanFactoryPostProcessor {
 

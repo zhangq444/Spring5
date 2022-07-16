@@ -33,9 +33,6 @@ public class Config {
      * 而不是这个 Bean 自身实例，如果要获取这个 Bean 自身实例，那么需要在名称前面加上 & 符号
      * 所以在SqlSessionFactoryBean这个类中的getObject方法返回的是sqlSessionFactory这个成员变量，所以在后面其他方法的注入时可以注入sqlSessionFactory。
      * 这个花了我3-4个小时才弄明白
-     * ————————————————
-     * 版权声明：本文为CSDN博主「桐花思雨」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-     * 原文链接：https://blog.csdn.net/weixin_38192427/article/details/123320599
      * @param dataSource
      * @return
      */
