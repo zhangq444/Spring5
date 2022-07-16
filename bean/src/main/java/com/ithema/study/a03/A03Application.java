@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * 这一讲讲的是bean的生命周期，从实例化，依赖注入，初始化，销毁方法，然后还可以通过bean的后处理器来增强bean的生命周期
+ * @author grzha
+ */
 @SpringBootApplication
 @Slf4j
 public class A03Application {

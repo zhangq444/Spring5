@@ -35,6 +35,9 @@ public class Bean1 {
         this.home = home;
     }
 
+    @Autowired
+    private Bean3 bean4;
+
     @PostConstruct
     public void init(){
         log.info("======PostConstruct");

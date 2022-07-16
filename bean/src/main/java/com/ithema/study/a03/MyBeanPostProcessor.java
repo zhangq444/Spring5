@@ -8,6 +8,10 @@ import org.springframework.beans.factory.config.DestructionAwareBeanPostProcesso
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.stereotype.Component;
 
+/**
+ *  这一讲讲的是自定义的bean的后处理器，是对bean的生命周期的各个阶段进行扩展的
+ * @author grzha
+ */
 @Component
 @Slf4j
 public class MyBeanPostProcessor implements InstantiationAwareBeanPostProcessor, DestructionAwareBeanPostProcessor {
@@ -39,7 +43,7 @@ public class MyBeanPostProcessor implements InstantiationAwareBeanPostProcessor,
     @Override
     public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName){
         if(StringUtils.equalsIgnoreCase("LifeCycle",beanName)){
-            log.info("======依赖注入方法执行之前");
+            log.info("======依赖注入方法执行的时候");
         }
         return null;
     }

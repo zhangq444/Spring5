@@ -10,6 +10,10 @@ import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.springframework.context.annotation.ContextAnnotationAutowireCandidateResolver;
 import org.springframework.context.support.GenericApplicationContext;
 
+/**
+ *  这一讲主要是讲bean的后处理器
+ * @author grzha
+ */
 @SpringBootApplication
 public class A04Application {
 

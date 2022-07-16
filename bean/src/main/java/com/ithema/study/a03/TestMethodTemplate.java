@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  使用模板模式，模拟bean的后处理器增强bean的生命周期的功能
+ * @author grzha
+ */
 @Slf4j
 public class TestMethodTemplate {
 

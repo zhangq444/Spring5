@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+/**
+ *  bean的基本的生命周期，包括bean的创建，依赖注入，初始化，销毁
+ * @author grzha
+ */
 @Component
 @Slf4j
 public class LifeCycle {
