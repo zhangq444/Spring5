@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class MyController {
 
+    /**
+     * 因为MyController是单例的，单例注入其他域的bean，都要加@Lazy注解
+     */
     @Lazy
     @Autowired
     private BeanForRequest beanForRequest;
