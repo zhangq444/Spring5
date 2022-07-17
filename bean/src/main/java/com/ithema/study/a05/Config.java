@@ -56,6 +56,11 @@ public class Config {
         return dataSource;
     }
 
+    /**
+     *  在注册@Mapper接口的时候，spring最终管理的不是接口，接口也无法被管理，最终管理的是对象，Mapper接口最终都是会生成
+     *  MapperFactoryBean对象，被spring管理，一下是通过一般的方式将Mapper接口转化为MapperFactoryBean对象，然后被spring
+     *  管理。最终管理的是Mapper工厂
+     */
 /*    @Bean
     public MapperFactoryBean<Mapper1> mapper1(SqlSessionFactory factoryBean){
         MapperFactoryBean<Mapper1> bean = new MapperFactoryBean<>(Mapper1.class);

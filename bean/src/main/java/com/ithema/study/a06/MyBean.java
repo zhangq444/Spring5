@@ -13,19 +13,32 @@ import javax.annotation.PostConstruct;
 @Slf4j
 public class MyBean implements BeanNameAware, ApplicationContextAware, InitializingBean {
 
+    /**
+     * BeanNameAware方法，注入bean的名字
+     * @param name
+     */
     @Override
     public void setBeanName(String name) {
-      log.info("======当前bean:{},名字叫:{}",this,name);
+      log.info("======setBeanName当前bean:{},名字叫:{}",this,name);
     }
 
+    /**
+     * ApplicationContextAware的方法，注入ApplicationContext
+     * @param applicationContext
+     * @throws BeansException
+     */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        log.info("======当前的容器，类型是:{}",applicationContext);
+        log.info("======setApplicationContext当前的容器，类型是:{}",applicationContext);
     }
 
+    /**
+     * InitializingBean的方法，afterPropertiesSet初始化方法
+     * @throws Exception
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info("======当前的bean，初始化操作:{}",this);
+        log.info("======当前的bean，afterPropertiesSet初始化操作:{}",this);
     }
 
     @Autowired

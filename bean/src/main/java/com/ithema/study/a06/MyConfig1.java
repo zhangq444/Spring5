@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
+/**
+ *  这个是用来测试Autowired和PostConstruct失效的情况，因为在这个配置类中有BeanFactoryPostProcessor
+ * @author grzha
+ */
 @Slf4j
 @Configuration
 public class MyConfig1 {

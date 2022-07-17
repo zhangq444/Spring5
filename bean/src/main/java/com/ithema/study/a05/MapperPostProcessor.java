@@ -16,6 +16,10 @@ import org.springframework.core.type.ClassMetadata;
 import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
 import org.springframework.core.type.classreading.MetadataReader;
 
+/**
+ *  自己实现@Mapper注解解析，使用的是BeanDefinitionRegistryPostProcessor这个接口，是之前使用的接口的子接口
+ * @author grzha
+ */
 @Slf4j
 public class MapperPostProcessor implements BeanDefinitionRegistryPostProcessor {
 

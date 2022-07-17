@@ -6,6 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+/**
+ *  这一讲主要讲初始化和销毁
+ * @author grzha
+ */
 @SpringBootApplication
 public class A07Application {
 
@@ -24,6 +28,10 @@ public class A07Application {
         return new Bean2();
     }
 
+    /**
+     * 这个没有关系，主要是jar包里面必须配置这个
+     * @return
+     */
     @Bean(initMethod = "init")
     public DruidDataSource dataSource(){
         DruidDataSource dataSource = new DruidDataSource();

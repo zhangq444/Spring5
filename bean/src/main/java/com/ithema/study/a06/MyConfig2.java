@@ -8,6 +8,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 
+/**
+ *  这个是针对MyConfig1的对比，虽然里面也有BeanFactoryPostProcessor，但是注入和初始化都不会失效，因为使用的是Aware和InitializingBean接口
+ * @author grzha
+ */
 @Slf4j
 public class MyConfig2 implements ApplicationContextAware, InitializingBean {
 
@@ -18,7 +22,7 @@ public class MyConfig2 implements ApplicationContextAware, InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info("======PostConstruct进行初始化了");
+        log.info("======afterPropertiesSet进行初始化了");
     }
 
     @Bean
